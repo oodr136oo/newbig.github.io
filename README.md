@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,10 +26,10 @@
 
    
     <div class="container">
-        <h1> <bdo dir="ltr" lang="en">愛團購X人壽股份有限公司</bdo>
+        <h1> <bdo dir="ltr" lang="en">人壽股份有限公司</bdo>
 		</h1>
 		
-		<font size="8" >聯名活動</font>
+		<font size="8" ></font>
 		
 		
 		
