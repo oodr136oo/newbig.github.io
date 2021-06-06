@@ -1,0 +1,460 @@
+﻿/* 靠上下拉式選單的 css
+position:absolute :以所在方塊 為基準
+position:relative :在同一方塊內相對之前一個元素的距離
+*/
+.menu{ /* 下拉式選單的5主框 css*/
+  position:fixed;
+   border: #ccc 1px solid;
+  font-size:1.2em;
+  font-family:標楷體;
+  font-weight:bold;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;	
+
+	width:122em;
+	height:1.6em;
+	top:0; 
+	left:0;
+    z-index:9;	
+}
+/* 定義子選單的框框樣式*/
+.menu a{                /*超連結的樣式*/
+  color:#fff;
+	background-color:white;
+	border:solid 1px navy;
+	text-decoration:none;
+	display:block;
+	width:12em;line-width:2em; /*下拉式的寬度	*/
+	height:1.6em;
+	
+}
+.menu a:hover{               /*滑鼠滑過*/
+	
+	filter=progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#FFCCCC, endcolorstr=#440000) /*漸層色設定*/
+}
+.menu span{	
+	color:#c5e1ed;
+	display:none;
+}
+.menuhead{
+	border-right:solid 1px #ffffff;
+}
+
+/* 定義分組選單 在主選單的位置與高度(會影響滑鼠的感應)*/
+#menu1{
+	position:absolute;
+	top:0;
+	left:0;
+	height:1.6em;
+	width:10em;	
+	text-decoration:none;
+}
+/*此處的 menu1 沒有下拉選單,在主選單即是超連結 因此須特別定義*/ 
+#menu1 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu1 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+#menu2{
+	position:absolute;
+	top:0;
+	left:10em;
+	height:1.6em;
+	display:green;
+	width:10em;	
+}
+#menu2 a{       /*超連結的樣式*/
+  color:#000000;
+  	background-color:#fff;
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu2 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu3{
+	position:absolute;
+	top:0;
+	left:20em;
+	height:1.6em;
+	width:10em;	
+}
+#menu3 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu3 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu4{
+	position:absolute;
+	top:0;
+	left:30em;
+	height:1.6em;
+	width:10em;	
+}
+#menu4 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu4 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu5{
+	position:absolute;
+	top:0;
+	left:40em;
+	height:1.6em;
+	width:10em;		
+}
+#menu5 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu5 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu6{
+	position:absolute;
+	top:0;
+	left:50em;
+	height:1.6em;
+	width:10em;	
+}
+#menu6 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu6 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu7{
+	position:absolute;
+	top:0;
+	left:60em;
+	height:1.6em;
+	width:10em;	
+}
+#menu7 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu7 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+
+
+#menu8{
+	position:absolute;
+	top:0;
+	left:70em;
+	height:1.6em;
+	width:10em;	
+}
+#menu8 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+border-style:outset;
+border-width:3.5px;
+border-color:#00DD00;	
+	display:block;;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu8 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu9{
+	position:absolute;
+	top:0;
+	left:80em;
+	height:1.6em;
+	width:10em;	
+}
+#menu9 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#fff;	
+	border-style:double;
+border-color:green;;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu9 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#fff;
+}
+
+#menu10{
+	position:absolute;
+	top:0;
+	left:90em;
+	height:1.6em;
+	width:10em;	
+}
+#menu10 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#ffcc99;	
+	border:none;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu10 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#ffffff;
+}
+
+#menu11{
+	position:absolute;
+	top:0;
+	left:100em;
+	height:1.6em;
+	width:10em;	
+}
+#menu11 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#ffcc99;	
+	border:none;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu11 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#ffffff;
+}
+
+
+#menu12{
+	position:absolute;
+	top:266;
+	left:0;
+	height:1.6em;
+	width:10em;	
+	text-decoration:none;
+}
+/*此處的 menu1 沒有下拉選單,在主選單即是超連結 因此須特別定義*/ 
+#menu12 a{       /*超連結的樣式*/
+  color:#000000;
+	background-color:#ffcc99;	
+	border:none;	
+	display:block;
+	width:10em;   /*下拉式的寬度	*/
+	line-width:0;
+	
+}
+#menu12 a:hover{  /*滑鼠滑過*/
+  background-color:#49abdb;	
+  color:#ffffff;
+}
+
+#menu21{
+	position:absolute;
+	top:0;
+	left:0;
+	height:24px;
+	width:10em;	
+}
+#menu22{
+	position:absolute;
+	top:24px;
+	left:0;
+	height:24px;
+	width:10em;	
+}
+
+#menu23{
+	position:absolute;
+	top:48px;
+	left:0;
+	height:24px;
+	width:10em;	
+}
+
+/* 定義子選單的相對主選單的位置與寬度*/
+.submenu{
+	visibility:hidden;
+	position:absolute;
+  left:10em;
+  top:0;
+  width:12em;  
+}
+/* 定義子選單的有超連結的樣式*/
+.submenu a{
+	background-color:#ffcc99;
+	border-top:solid 1px #ffffff;
+}
+
+.submenu1{
+	visibility:hidden;
+	position:absolute;
+  left:0em;
+  top:1.6em;
+  width:10em;  
+}
+.submenu1 a{
+	background-color:#ffcc99;
+	border-top:solid 1px #ffffff;
+}
+
+.submenu2{
+	visibility:hidden;
+	position:absolute;
+  left:10em;
+  top:0;
+  width:10em;  
+}
+.submenu2 a{
+	background-color:#ffcc99;
+	border-top:solid 1px #ffffff;
+  
+}
+
+body{background-color:#E7FFFF;}
+#right1{
+	position:absolute;
+	left:300;
+	top:400;
+	font-size:17px;	
+	padding:5px,0px,0px,0px;
+	border:1px double white;
+	background-color:#aa00BB;
+	width:400px; 
+  height:300px;
+}
+#content{	
+  position:absolute;
+  top:10;
+  left:30em;		
+	width:400px; 
+  height:300px;
+}
+#left1{
+	position:absolute;
+	left:20;
+	top:100;	
+}
+#button_style1{
+  position: absolute;
+  top:expression(document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2); /*置中浮動設定*/
+  left:expression(document.body.scrollLeft +50); 
+  font-weight:bold;
+  font-size:16px;
+  color:blue;
+  background-color:#996600;
+  width:80px;
+  height:40px;
+}
+#block1{
+	position:absolute;
+	left:10;
+	top:10;
+	float:left;		
+	width:700px; 
+  height:600px;
+  border:3px double white;
+  filter=progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#D7FFFF, endcolorstr=#E2FAED) /*漸層色設定*/	
+}  
+
+
+#block3
+{
+	position:absolute;
+	top:40px; 
+	left:10px;
+	width:700px;
+	height:420px;
+ background-image:url(6-0.jpg);
+    background-repeat:no-repeat;	
+
+    background-size:cover;
+	
+} 
+#block1-1
+{
+	position:absolute;
+	top:40px; 
+
+  font-family:標楷體;
+    font-weight:bold;
+	float:left;		
+	width:700px; 
+  height:420px;
+  font-size:18px;
+	
+    background-image:url(https://i.ytimg.com/vi/GMj-DewMDMs/maxresdefault.jpg);
+    background-repeat:no-repeat;	
+
+    background-size:cover;
+} 

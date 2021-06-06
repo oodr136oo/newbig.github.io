@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf8 /> 
+  <title>網路投保</title> 
+
+<link rel=StyleSheet type=text/css href=menu.css>
+<script language="JavaScript" charset="utf8" src="menu.js"></script>
+<style>
+        kaiText
+        {
+            font-family : 微軟正黑體;
+            font-size : 18px;
+            text-align : left
+            line-height: 30px;
+        }
+		#block2
+{
+	position:absolute;
+	top:40px; 
+	left:10px;
+	width:700px;
+	height:420px;
+  background-image:url(https://pic1.zhimg.com/v2-97badd4730166a14ef8bfe69041fbcc5_720w.jpg?source=172ae18b);
+    background-repeat:no-repeat;	
+
+    background-size:cover;
+	
+}
+    </style>
+</head>
+<body id="block2">
+    <kaiText>
+        <form action="bag7-1.php" method="GET">
+            <table border="0">
+
+                <tr>
+                    <td>查詢欄位</td>
+                    <td>
+                        <select name="queryField">
+                            <option value="stuSno">編號</option>
+                            <option value="stuName">姓名</option>
+                            <option value="stuPhone">電話</option>
+                            <option value="stuAddress">住址</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td>搜尋內容</td><td><input type="text" name="queryString" size="20"></td></tr>
+                <tr><td></td><td align="right"><input type="submit" name="submit" value="搜尋"></td></tr>
+            </table>
+        </form>
+    </kaiText>
+	
+	
+	
+
+</body>
+</html>

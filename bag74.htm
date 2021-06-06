@@ -1,0 +1,1044 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf8>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<title>客戶管理</title>
+<link rel=StyleSheet type=text/css href=menu1.css> 
+<script language="JavaScript" charset="utf8" src="menu2.js"></script>
+<script async defer src="https://maps.google.cn/maps/api/js?key=AIzaSyDcaO_4tupm75ShUvWqVdGuFfSNCsXBayo&callback=initMap"> </script>	
+<script src="jquery-2.0.3.js"></script>
+<style type="text/css"> 
+	.style8 {font-size: 14px;}
+	.style9 {font-size: 18px}
+	.style10{font-size: 18px}
+#first_page, #next_page, #end_page, #previous_page,#close_act,#query_method,#add,#modify,#delete
+	{
+		cursor: pointer;
+	}	
+	#result tr:hover
+	{
+		background-color:#ffb3b3;
+	}
+input[type='button']:hover
+	{
+		font-size: 21px;
+		background-color: #00FFFF;
+	}	
+
+
+
+#container 
+{ 
+	width : 1100px; 
+	margin : 2px auto;
+}
+#title 
+{ 
+	top :40px;
+	width : 680px; 
+	height :50px;
+	margin-left:15%;		
+	background:-webkit-gradient(linear, 65% 36%, 21% 86%, from(#C394DD), to(#3D4BC2))		
+}
+.fix:after
+{ 
+	content : "."; 
+	clear : both;
+	display : block;
+	height : 0;
+	visibility : hidden; 
+}
+#tabs 
+{ 
+	position : absolute; 
+	list-style-type : none; 
+	font-family:"華康圓體 Std W3";
+	font-size:15pt;		
+	top:5px; 
+	left:200px;			
+}
+#tabs li 
+{ 
+	position : relative;
+	float : left;  
+	width : 160px;
+	text-align : center;  
+	margin : 0 3px;
+}
+#tabs li a.active 
+{ 
+	position : relative;
+	top : 0px;
+	background-color : #339999;
+	border:5px solid #000000;
+	border-top-width:2px;
+	border-left-width:2px;
+	border-right-width:2px;
+	color: #FFFFFF;
+}
+#tabs li a 
+{ 
+	position : relative;
+	color: #000000;   
+	display: block;
+	padding: 5px 5px 5px 0px;            
+	text-decoration: none; 
+	border:groove 2px #23b1c4;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:9px;
+	border-bottom-right-radius:9px;
+	background-color : #ffffcc;
+}
+.content 
+{ 
+	border :0px solid #333;
+}
+.tab
+{
+	display : none;         
+}
+#block_store
+{
+	position:fixed; 
+	margin:0px;
+	border:0px;
+	padding:0px; 
+	top:36px;	
+	left:30px;
+	width:860px;
+	height:150px;
+	font-size:14px;
+	background-color:#e0ebeb;
+	z-index:3;
+}
+#result
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:280px;
+	left:30px;
+	width:800px;
+	height:360px;
+	background-color:#ffff99;
+	overflow: scroll;
+	z-index:1;
+}
+#table2
+{
+	position:absolute;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:180px;
+	left:430px;
+	width:560px;
+	height:560px;
+	background-color:#D2E9FF;
+	z-index:1;
+}
+.header
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:0px;
+	left:0px;
+	width:100vw;
+	height:70px;
+	background-color:#e80113;
+	z-index:2;	
+}	
+.back
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:70px;
+	left:0px;
+	width:100vw;
+	height:14vh;
+	background-color:#e9ffff;
+	z-index:2;	
+}
+#block0
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:30vh;
+	left:35vw;
+	width:30vw;
+	height:250px;
+	background-color:#ffffff;
+	z-index:1;
+}
+#text0
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:54vh;
+	left:43vw;
+	width:20vw;
+	height:10vw;
+	z-index:1;
+}
+.block
+{
+	position:fixed;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:24vh;
+	left:33vw;
+	width:34vw;
+	height:10vh;
+	background-color:#ffffff;
+	z-index:2;
+}		
+a{text-decoration:none}
+.text
+{
+	position:absolute;
+	margin:0px;
+	border:0px;
+	padding:0px;
+	top:5px;
+	left:5px;
+	width:300px;
+	height:20px;
+	z-index:1;
+}	
+#flash{
+	position: absolute;
+	top: 0px;
+	left:0px;
+	z-index:1;
+}
+.fontstyle1
+{
+	font-size: 24px;
+	face:"華康皮皮體w5";
+ }
+.fontstyle2
+{
+	font-size: 24px;
+	face:"華康皮皮體w5";
+	color:#ffffff;
+}
+.fontstyle3
+{
+	font-size: 20px;
+}
+#googleMap{
+	position:absolute; 
+	top:170px;
+	left:810px;
+}
+</style> 
+<script >
+var map, geocoder, infoWindow,  pos1,pos;
+var marker;
+var marker1;
+var tot_dist=0;
+var p_sno=0;
+var time_count=0;
+var addr1 = [];
+var addr2 = [];
+var lat_a = [];
+var lng_a = [];
+var f_company_addr_a=[];	
+var f_company_name_a=[];	
+var f_company_id_a=[];	
+var markers = [];
+var onChangeHandler;
+
+function initMap() {
+			geocoder = new google.maps.Geocoder();
+			map = new google.maps.Map(document.getElementById('googleMap'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 17
+			});
+		var directionsService = new google.maps.DirectionsService;
+         
+		var directionsDisplay = new google.maps.DirectionsRenderer({
+		polylineOptions: {
+			Color: "red"
+		}
+		});
+		
+        directionsDisplay.setMap(map);
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+       	infoWindow = new google.maps.InfoWindow({map: map});
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			var popupContent="";
+			navigator.geolocation.getCurrentPosition(
+			function(position) 
+			{
+				var pos = 
+				{
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+				geocoder.geocode({
+				  'latLng': pos
+				}, function(results, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						if (results) {
+							// 將取得的資訊傳入 marker 訊息泡泡
+							popupContent = results[0].formatted_address;
+							document.getElementById("addr").value=popupContent;
+							//infoWindow.setPosition(pos);
+							//infoWindow.setContent("<img src='mark.jpg' width=30>"+popupContent);
+							//infoWindow.open(map);
+							map.setCenter(pos);
+						}
+					} else {
+						alert("Reverse Geocoding failed because: " + status);
+					}
+				});
+				document.getElementById("lat").innerText=pos.lat;
+				document.getElementById("lng").innerText=pos.lng;
+				map.addListener( 'dblclick', function (event) {
+				       pos=event.latLng;
+					   var marker1 = new google.maps.Marker({
+							position: pos,
+							map:map,
+							//title: popupContent,
+							draggable:true
+						  });
+					               
+				  });
+
+				
+				
+				/*
+				map.addListener('center_changed', function() {
+				  // 3 seconds after the center of the map has changed, pan back to the
+				  // marker.
+				  window.setTimeout(function() {
+					map.panTo(marker.getPosition());
+				  }, 6000);
+				});
+				*/
+				
+				
+				
+				
+				
+				  var marker = new google.maps.Marker({
+					position: pos,
+					map:map,
+					title: popupContent,
+					draggable:true
+				  });
+				  marker.setMap(map);
+				  marker.addListener("dragend",function()
+				  {
+						pos=marker.position;
+						// alert(pos);
+						geocoder.geocode({
+						  'latLng': pos
+						}, function(results, status) {
+							if (status === google.maps.GeocoderStatus.OK) {
+								if (results) {
+									// 將取得的資訊傳入 marker 訊息泡泡
+									var popupContent = results[0].formatted_address;
+									document.getElementById("addr").value=popupContent;
+									//infoWindow.setPosition(pos);
+									//infoWindow.setContent("<img src='mark.jpg' width=30>"+popupContent);
+									map.setCenter(pos);
+								}
+							} else {
+								alert("Reverse Geocoding failed because: " + status);
+							}
+						});
+						
+						document.getElementById("lat").innerText=pos.lat();
+						document.getElementById("lng").innerText=pos.lng();
+				  });			
+			//var markerPosition = marker.getPosition();				
+		  }, function() {
+			handleLocationError(true, infoWindow, map.getCenter());
+		  });
+		 
+		} else {
+		  // Browser doesn't support Geolocation
+		  handleLocationError(false, infoWindow, map.getCenter());
+		}
+    }
+
+var p_sno=0;
+var sel_a=[];
+var point_num=[];
+var addr_point_num=0;
+var f_custom_addr="";
+var f_custom_addr_a=[];
+var f_custom_name="";	
+var f_custom_name_a=[];
+var f_custom_tel="";
+var f_custom_tel_a=[];	
+var f_custom_area_a=[];
+var f_custom_email_a=[];
+var f_custom_id_a=[];
+var f_custom_area_a=[];
+var f_custom_celephone_a=[];
+var f_custom_line_a=[];
+var f_custom_connector_a=[];
+var f_custom_fax_a=[];
+var f_company_id_a=[];
+var f_post_a=[];
+//var f_bank_acc_name1_a=[];
+//var f_bank_acc_no1_a=[];
+var f_open_invoice_a=[];
+//var f_bank_acc_name2_a=[];
+//var f_bank_acc_no2_a=[];
+var f_mark_a=[];
+var f_sno_a=[];
+var sno=0;
+var read5_flg;
+var page_no=1;
+var max_page=0;
+var query_buf="";
+var per_page=10;
+var data_change="T";
+$(function()
+{
+	document.getElementById("page_num").innerText=per_page;
+	$(".menu_2").css({"visibility": "hidden"});
+	$("#grid3").css({"visibility": "hidden"});
+	var f_custom_id;     
+	var f_custom_name;
+	var f_custom_addr; 
+	var f_custom_tel; 
+	var f_custom_celephone;
+	var f_custom_line ; 
+	var f_custom_email;
+    var out;
+	var page=0;	
+	$(".tab:eq(0)").show();
+	$("#tabs li a:eq(0)").addClass('active');		
+	$('ul#tabs li a').click(function() 
+	{			
+		//$("#page"+page).hide();
+		page = $('ul#tabs li a').index(this);
+		$('ul#tabs li a').removeClass('active');
+		$(".tab:visible").hide();		
+		$(".tab:eq(" + page + ")").show();
+	//	$("#page"+page).show();
+		page_now=page;
+		 // document.location.href="layout"+(index+1)+".htm";
+		$(this).addClass('active');	
+        switch(page)
+		{
+		case 0 :
+			$("#block_store").css({"background-color": "#e0ebeb"});					
+			break;
+		case 1 :
+			$("#block_store").css({"background-color": "#cce6ff"});					
+			break;	
+		case 2 :
+			$("#block_store").css({"background-color": "#99c2ff"});					
+			break;
+		}	
+		return false;
+	});	
+	$("#query_method").click(function()
+	{
+		if (data_change=="T")
+		{
+			out=$("#query_method").val();
+			page_no=1;
+			$('#page_no').val(1);
+			ajax();
+			data_change="F";
+		}
+	});	
+	$("#f_custom_id").click(function()
+	{
+		 /*
+		 query_method=$("#query_method").val();
+		 if (query_method!="編號查詢")
+		 {
+			f_custom_id=($('#f_custom_id').val()).trim();
+			query_buf=f_custom_id;
+		 }
+		 */
+		 $("#query_method").val("編號查詢");		 
+	});
+	$("#f_custom_connector").click(function()
+	{
+		/*
+		 query_method=$("#query_method").val();
+		if (query_method!="聯絡人查詢")
+		{
+			f_custom_connector=($('#f_custom_connector').val()).trim();
+			query_buf=f_custom_connector;
+		}
+		 */
+		$("#query_method").val("聯絡人查詢");		 
+	});
+	$("#f_custom_name").click(function()
+	{
+		/*
+		 query_method=$("#query_method").val();
+		if (query_method!="公司名查詢")
+		{
+			f_custom_name=($('#f_custom_name').val()).trim();
+			query_buf=f_custom_name;
+		}
+		 */
+		$("#query_method").val("公司名查詢");
+	});
+	$("#f_custom_addr").click(function()
+	{
+	    /*
+		 query_method=$("#query_method").val();
+		if (query_method!="住址查詢")
+		{
+			f_custom_addr=($('#f_custom_addr').val()).trim();
+			query_buf=f_custom_addr;
+		}
+		 */
+		$("#query_method").val("住址查詢");
+	});
+	$("#f_custom_tel").click(function()
+	{
+		/*
+		 query_method=$("#query_method").val();
+		if (query_method!="電話查詢")
+		{
+			f_custom_tel=($('#f_custom_tel').val()).trim();
+			query_buf=f_custom_tel;
+		}
+		 */
+		 $("#query_method").val("電話查詢");
+	});
+	$("#f_custom_celephone").click(function()
+	{
+		/*
+		 query_method=$("#query_method").val();
+		if (query_method!="手機查詢")
+		{
+			f_custom_celephone=($('#f_custom_celephone').val()).trim();
+			query_buf=f_custom_celephone;
+		}
+		 */
+		$("#query_method").val("手機查詢");
+	});
+	$("#f_company_id").click(function()
+	{
+		/*
+		  query_method=$("#query_method").val();
+		if (query_method!="統編查詢")
+		{
+			f_company_id=($('#f_company_id').val()).trim();
+			query_buf=f_company_id;
+		}
+		 */
+		 $("#query_method").val("統編查詢");
+	});	
+	
+	$("#f_custom_id").change(function()
+	{
+		f_custom_id=$("#f_custom_id").val();
+		query_buf_change(); 
+	});
+	$("#f_custom_connector").change(function()
+	{
+		f_custom_connector=$("#f_custom_connector").val();
+		query_buf_change(); 
+	});
+	$("#f_custom_name").change(function()
+	{
+		f_custom_name=$("#f_custom_name").val();
+		query_buf_change(); 
+	});
+	$("#f_custom_addr").change(function()
+	{
+	    f_custom_addr=$("#f_custom_addr").val();		
+		query_buf_change(); 
+	});
+	$("#f_custom_tel").change(function()
+	{
+		f_custom_tel=$("#f_custom_tel").val();	
+		query_buf_change(); 
+	});
+	$("#f_custom_line").change(function()
+	{
+		f_custom_line=$("#f_custom_line").val();	
+		query_buf_change(); 
+	});
+	$("#f_custom_celephone").change(function()
+	{
+		f_custom_celephone=$("#f_custom_celephone").val();	
+		query_buf_change(); 
+	});
+	$("#f_company_id").change(function()
+	{
+		f_company_id=$("#f_company_id").val();
+		query_buf_change(); 
+	});
+	function query_buf_change()
+	{
+		query_method=$("#query_method").val();
+		data_change="T";
+		//alert(query_method)
+		switch(query_method)
+		{
+		case "mail查詢":  
+			query_buf=f_custom_email;
+			break;
+		case "編號查詢":
+			query_buf=f_custom_id;
+			break;
+		case "聯絡人查詢":
+			query_buf=f_custom_connector;
+			break;
+		case "公司名查詢": 
+			query_buf=f_custom_name;
+			break;
+		case "住址查詢":
+			query_buf=f_custom_addr;
+			break;		
+		case "電話查詢":  
+			query_buf=f_custom_tel;
+			break;
+		case "line查詢":  
+			query_buf=f_custom_line;
+			break;
+		case "手機查詢":  
+			query_buf=f_custom_celephone;
+			break;
+		case "統編查詢":  
+			query_buf=f_company_id;
+			break;
+		}
+		query_buf=query_buf.trim();
+	}
+	$("#page_no").change(function()
+	{
+		page_no=Number($('#page_no').val());		
+		if (page_no>0)
+		{
+		    ch_page(page_no);
+		}
+	});
+	$("#previous_page").click(function()
+	{
+		page_no=Number($('#page_no').val())-1;
+		
+		if (page_no>0)
+		{
+		    ch_page(page_no);
+		}
+	});
+	
+	$("#next_page").click(function()
+	{
+		page_no=Number($('#page_no').val())+1;		
+		if (page_no<=max_page)
+		{
+		    ch_page(page_no);
+		}
+	});
+	$("#first_page").click(function()
+	{	
+		    ch_page(1);
+	});
+	
+	$("#end_page").click(function()
+	{
+		page_no=max_page;
+		if (page_no>0)
+		{
+		    ch_page(page_no);
+		}
+	});
+	function ch_page(cur_page)
+	{
+	$('#page_no').val(cur_page);
+	// alert("test:"+cur_page)
+	    out=$("#query_method").val();				
+		ajax();
+	}
+	$("#home_page").click(function()
+	{
+		history.go(-1);		
+	});
+	function getdata()
+	{ 
+		//查詢項
+		f_custom_id        =$('#f_custom_id').val();
+		f_custom_name      =$('#f_custom_name').val(); 
+		f_custom_addr      =$('#f_custom_addr').val();
+		f_custom_tel       =$('#f_custom_tel').val();
+		f_custom_celephone =$('#f_custom_celephone').val();
+		f_company_id       =$('#f_company_id').val();
+		
+		//非查詢項 
+		f_custom_connector =$('#f_custom_connector').val();	
+		f_custom_fax       =$('#f_custom_fax').val();
+		f_custom_line      =$('#f_custom_line').val(); 
+		f_custom_email     =$('#f_custom_email').val();		
+		f_post       =$('#f_post').val();
+		//f_bank_acc_name1   =$('#f_bank_acc_name1').val();
+		//f_bank_acc_no1     =$('#f_bank_acc_no1').val();
+		f_open_invoice       =$('#f_open_invoice').val();
+		//f_bank_acc_name2   =$('#f_bank_acc_name2').val();
+		//f_bank_acc_no2     =$('#f_bank_acc_no2').val();
+		f_mark             =$('#f_mark').val();		
+		sno      		   =$('#sno').val();
+		page_no            =$('#page_no').val();
+		query_method=$("#query_method").val();
+		
+	}
+	function ajax()
+	{	
+		getdata();
+		//alert(out+query_method);		
+		$.post('bag74.php',
+		{ 
+		  f_custom_id       :f_custom_id,
+		  f_custom_name     :f_custom_name,  
+		  f_custom_addr     :f_custom_addr,
+		  f_custom_tel      :f_custom_tel ,		  
+		  f_custom_celephone:f_custom_celephone,
+		  f_custom_line     :f_custom_line,
+		  f_custom_email    :f_custom_email,
+		  f_custom_connector:f_custom_connector,
+		  f_custom_fax      :f_custom_fax,
+		  f_company_id      :f_company_id,
+		  f_post            :f_post,
+		  //f_bank_acc_name1  :f_bank_acc_name1,
+		  //f_bank_acc_no1    :f_bank_acc_no1,
+		  f_open_invoice      :f_open_invoice,
+		  //f_bank_acc_name2  :f_bank_acc_name2,
+		  //f_bank_acc_no2    :f_bank_acc_no2,
+		  f_mark            :f_mark,
+		  query_method		:query_method,
+		  query_buf			:query_buf,
+		  page_no			:page_no,
+		  per_page          :per_page,
+		  sno               :sno,
+		  out 			    :out 
+		},
+		function(data) 
+		{        //回傳資料
+		    res_echo=$(data).find('res_echo').text();
+			//alert(out.indexOf("查詢"));
+            if (out.indexOf("查詢")<0)
+			{
+				alert(res_echo);
+			}
+			/*
+			$("#query_method").val("編號查詢");
+			if (page==2)
+			{
+				$(data).find('f_custom_id').val("");
+			}
+			*/
+			query_tot_num=Number($(data).find("query_tot_num").text());
+			max_page=Math.floor((query_tot_num-1)/per_page)+1;
+			//alert(query_tot_num+"    "+max_page)
+			$("#max_num").html(max_page+"頁");
+			$("#page_no").attr('max',max_page);
+			
+			switch(query_method)
+			{
+			case "mail查詢":  
+				html="<table border=1 width=600px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";		
+				html+="<th width=240px>mail</th>";
+				break;
+			case "編號查詢":				
+			case "公司名查詢":
+			case "住址查詢":
+				html="<table border=1 width=780px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";			
+				html+="<th width=400px align=left>住址</th>";
+				break;
+			case "聯絡人查詢":
+				html="<table border=1 width=740px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";			
+				html+="<th width=100px align=left>聯絡人</th>";
+				break;
+			case "統編查詢":
+			
+				html="<table border=1 width=740px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";			
+				html+="<th width=100px align=left>統一編號</th>";
+				
+				break;
+			case "電話查詢":  
+				html="<table border=1 width=460px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";
+				html+="<th width=160px align=left>電話</th>";
+				break;
+			case "line查詢":  
+				html="<table border=1 width=460px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";	
+				html+="<th width=120px align=left>LINE</th>";
+				break;
+			case "區域查詢":  
+				html="<table border=1 width=420px class=style10><th width=80px>編號</th><th width=260px>公司名稱</th>";			
+				html+="<th width=80px align=left>區域</th>";
+				break;
+			}	
+			$(data).find("sales").each(                      //回傳處理多筆資料,先把資料全部取出
+			function(i)      //i 傳回震裂所引
+			{			
+				f_custom_addr_a[i]=$(this).find('f_custom_addr').text();
+				f_custom_name_a[i]=$(this).find('f_custom_name').text();
+				f_custom_tel_a[i]=$(this).find('f_custom_tel').text();				
+				f_custom_email_a[i]=$(this).find('f_custom_email').text();	
+				f_custom_id_a[i]=$(this).find('f_custom_id').text();	
+				f_custom_area_a[i]=$(this).find('f_custom_area').text();
+				f_custom_celephone_a[i]=$(this).find('f_custom_celephone').text();	
+				f_custom_line_a[i]=$(this).find('f_custom_line').text();
+				f_custom_connector_a[i]=$(this).find('f_custom_connector').text();
+				
+				f_custom_fax_a[i]=$(this).find('f_custom_fax ').text();
+				f_company_id_a[i]=$(this).find('f_company_id').text();
+				f_post_a[i]=$(this).find('f_post').text();
+			//	f_bank_acc_name1_a[i]=$(this).find('f_bank_acc_name1').text();
+			//	f_bank_acc_no1_a[i]=$(this).find('f_bank_acc_no1').text();
+				f_open_invoice_a[i]=$(this).find('f_open_invoice').text();
+			//	f_bank_acc_name2_a[i]=$(this).find('f_bank_acc_name2').text();
+			//	f_bank_acc_no2_a[i]=$(this).find('f_bank_acc_no2').text();
+				f_mark_a[i]=$(this).find('f_mark').text();			
+				
+				f_sno_a[i]=$(this).find('sno').text();			
+				html+="<tr><td onclick='showmap("+i+")'width=90px >"+$(this).find('f_custom_id').text() +"</td>";
+				html+="<td onclick='showmap("+i+")' width=240px>"+$(this).find('f_custom_name').text() +"</td>";
+				html+="<td onclick='showmap("+i+")' width=120px>";
+				switch(query_method)
+				{				
+				case "line查詢":  
+					html+=f_custom_line_a[i]+"</td>";
+					break;
+				case "mail查詢":  
+					html+=f_custom_email_a[i]+"</td>";
+					break;
+				case "編號查詢":
+				case "住址查詢": 					
+				case "公司名查詢" :  
+					html+=f_custom_addr_a[i]+"</td>";
+					break;
+				case "統編查詢" : 
+					html+=f_company_id_a[i]+"</td>";
+					break;
+				case "聯絡人查詢": 
+					html+=f_custom_connector_a[i]+"</td>";
+					break;
+				case "電話查詢":  
+					html+=f_custom_tel_a[i]+"</td>";
+					break;
+				case "line查詢":  
+					html+=f_custom_line_a[i]+"</td>";;
+					break;
+				case "區域查詢":  
+					html+=f_custom_area_a[i]+"</td>";;
+					break;
+				}	
+			});
+			html+="</table>";
+			$("#result").html(html);
+			// alert("lat"+lat_a_a[addr_point_num][0]+"   "+lng_a_a[addr_point_num][0]);             
+			addr_p(f_custom_tel_a[0],f_custom_name_a[0],f_custom_addr_a[0]);
+			$("#f_custom_addr").val(f_custom_addr_a[0]);
+			$("#f_custom_id").val(f_custom_id_a[0]);	
+			$("#f_custom_name").val(f_custom_name_a[0]);
+			$("#f_custom_tel").val(f_custom_tel_a[0]);			
+			$("#f_custom_email").val(f_custom_email_a[0]);
+			$("#f_custom_line").val(f_custom_line_a[0]);
+			$("#f_custom_celephone").val(f_custom_celephone_a[0]);		
+			$("#f_custom_area_sel").find(":selected").text();
+			$("#f_custom_connector").val(f_custom_connector_a[0]);
+			$("#f_custom_fax").val(f_custom_fax_a[0]);
+			$("#f_company_id").val(f_company_id_a[0]);
+			$("#f_post").val(f_post_a[0]);
+		//	$("#f_bank_acc_name1").val(f_bank_acc_name1_a[0]);
+		//	$("#f_bank_acc_no1").val(f_bank_acc_no1_a[0]);
+			$("#f_post").val(f_post_a[0]);
+		//	$("#f_bank_acc_name2").val(f_bank_acc_name2_a[0]);
+		//	$("#f_bank_acc_no2").val(f_bank_acc_no2_a[0]);
+			$("#f_mark").val(f_mark_a[0]);
+			$("#sno").val(f_sno_a[0]);	
+		});	
+	}   
+    $("#add,#modify,#delete").click(function()
+	{ 
+		out=$(this).val();		
+		if (out=="刪除")
+		{
+			var r=confirm("確定要刪除嗎")
+            if (r==true)
+			{
+				ajax();
+			}
+		}
+		else
+		{
+			msg="";
+			str=$("#f_custom_name").val();
+			str=str.trim();
+			if(str.length==0)
+			{	    
+				msg="公司名稱不能空白 ";
+				alert(msg);
+			}
+			else
+			{	
+				msg="";				
+				ajax();	
+			}
+		}
+		return false;
+	});		
+    
+});
+function printpage(myDiv)
+{
+	var newstr = document.getElementById(myDiv).innerHTML;
+	var oldstr = document.innerHTML;
+	var WinPrint = window.open();
+	WinPrint.document.body.innerHTML = newstr;
+	WinPrint.window.print();
+	WinPrint.close();
+	document.innerHTML = oldstr;
+	return false;
+}
+
+function showmap(n)
+{
+    $("#f_custom_id").val(f_custom_id_a[n]);
+	$("#f_custom_addr").val(f_custom_addr_a[n]);		
+	$("#f_custom_name").val(f_custom_name_a[n]);	
+	$("#f_custom_tel").val(f_custom_tel_a[n]);	
+	$("#f_custom_email").val(f_custom_email_a[n]);
+	$("#f_custom_line").val(f_custom_line_a[n]);
+	$("#f_custom_celephone").val(f_custom_celephone_a[n]);
+	$("#f_custom_connector").val(f_custom_connector_a[n]);
+    $("#f_custom_fax").val(f_custom_fax_a[n]);
+    $("#f_company_id").val(f_company_id_a[n]);
+    $("#f_post").val(f_post_a[n]);
+//    $("#f_bank_acc_name1").val(f_bank_acc_name1_a[n]);
+//    $("#f_bank_acc_no1").val(f_bank_acc_no1_a[n]);
+    $("#f_open_invoice").val(f_open_invoice_a[n]);
+//    $("#f_bank_acc_name2").val(f_bank_acc_name2_a[n]);
+//    $("#f_bank_acc_no2").val(f_bank_acc_no2_a[n]);
+    $("#f_mark").val(f_mark_a[n]);
+	$("#sno").val(f_sno_a[n]);
+	
+    addr_p(f_custom_tel_a[n],f_custom_name_a[n],f_custom_addr_a[n]);
+ /* 
+  $("#f_custom_area").(f_custom_area_a[n]);
+  $("#f_area_sel").find(":selected").text();
+  $("#query_method").val();
+ 
+ */ 
+}
+function return1()
+{
+	document.location.href="index.htm";
+}
+function showAddress(result, marker) {
+        map.setCenter(marker.getPosition());
+        // 顯示傳入的地址資訊
+        var popupContent = '<b>地址: </b> ' + result.formatted_address;
+        popup.setContent(popupContent);
+        popup.open(map, marker);
+    }
+function addr_p(my_tel,my_name,address)
+{
+	
+	map = new google.maps.Map(document.getElementById('googleMap'), {
+			  center: {lat: -34.397, lng: 150.644},
+			  zoom: 17
+			});
+	
+	geocoder = new google.maps.Geocoder();	
+    geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') 
+	{
+		  map.setCenter(results[0].geometry.location);
+		  var marker = new google.maps.Marker({
+			  map: map,
+			  position: results[0].geometry.location
+		  });
+	}
+	else 
+	{
+	//	alert('這個地址 Google 說不知道，所以沒辦法顯示地圖！');
+	}
+  });
+/*	
+	alert("map1");
+	
+	geocoder.getLatLng(address, function(point) { 
+	if (!point) 
+	{ 
+	     
+	} else 
+	{ 
+		alert("map");
+		map.setCenter(point, 16); 
+		var marker = new GMarker(point); 
+		map.addOverlay(marker);
+		str="<img src='holygo/png/31.png' width=50><font color=#e52b69 style='font-size:18px'>"+my_name+"  : </font> TEL:"+my_tel+"<br><font color=blue>"+address+"</font>";	
+		marker.openInfoWindowHtml(str); 
+	} 
+	}); 
+	google.setOnLoadCallback(initialize);
+	*/
+}	
+</script>
+</head>
+<body   alink="#ffffff" link="#ffffff" vlink="#ffffff" style="font-family:微軟正黑體">
+<div id=block_store >
+<table width=860px border=0 class=style10>
+
+<tr><td width=160px align=right>客戶編號</td><td width=100px><input type="text" size=10 id=f_custom_id    style="background-color:#ffe6e6;" placeholder="新增請填前兩碼為分類碼" class=style10 ></td>	
+	<td width=180px align=right>公司名稱</td><td width=240px><input type="text" size=20 id=f_custom_name value=" " style="background-color:#ffe6e6;" class=style10></td>
+    <td width=80px align=right>聯絡人  </td><td width=100px><input type="text"  size=8   id=f_custom_connector value=""     style="background-color:#ffe6e6;" class=style10></td>	
+
+<tr><td align=right>統一編號</td><td>          <input type="text"  size=10  id=f_company_id                    style="background-color:#ffe6e6;" class=style10></td>
+	<td align=right>地址    </td><td colspan=3><input type="text"  size=50 id=f_custom_addr      value="台中" style="background-color:#ffe6e6;" class=style10></td>
+<tr><td align=right>聯絡電話</td><td>          <input type="text"  size=10  id=f_custom_tel       value=""     style="background-color:#ffe6e6;" class=style10></td>	
+	<td align=right>傳真    </td><td>          <input type="text"  size=8 id=f_custom_fax       value="" class=style10    ></td>		
+	<td align=right>行動電話</td><td>          <input type="text"  size=8 id=f_custom_celephone value=""     style="background-color:#ffe6e6;" class=style10></td>
+ <tr><td align=right>LINE ID </td><td>          <input type="text" size=10  id=f_custom_line     class=style10></td>
+    <td align=right>電子郵件</td><td>          <input type="email" size=20 id=f_custom_email    class=style10></td>  
+<tr><td align=right>是否附回郵 </td><td>       <input type="text"  size=1  id=f_post            class=style10></td>	
+	<td align=right>是否開發票 </td><td>       <input type="text"  size=1  id=f_open_invoice    class=style10></td>	
+	
+<!--<tr><td>銀行別1 </td><td><input type="text"  size=15  id=f_post></td>	
+	<td>戶名1   </td><td><input type="text"  size=15  id=f_bank_acc_name1></td>
+	<td>帳號1   </td><td><input type="text"  size=15  id=f_bank_acc_no1></td>
+<tr><td>銀行別2 </td><td><input type="text"  size=15  id=f_open_invoice></td>	
+	<td>戶名2   </td><td><input type="text"  size=15  id=f_bank_acc_name2></td>
+	<td>帳號2   </td><td><input type="text"  size=15  id=f_bank_acc_no2></td>-->
+<td align=right>備註</td><td><input type="text"  size=8  id=f_mark class=style10>
+<input type=text id=sno hidden></td>
+</table>
+<br>	
+	<input type="button" value="編號查詢" id=query_method class=style10 style="width:100px">	
+	<input type="button" value="新增"     id=add     class=style10 style="width:100px">
+	<input type="button" value="修改"     id=modify  class=style10 style="width:100px">
+	<input type="button" value="刪除"     id=delete  class=style10 style="width:100px"><br>
+	<!--<div id=f_custom_area_sel></div>
+	區域<input type="text" size=20 id=f_custom_area value="台中市西區"> -->
+	<span class=style10>第<input type="number" id=page_no value=1 style="width:3em;" step=1 min=1 max=1>頁 <span id=first_page onclick="first_page()">第一頁</span><span id=previous_page onclick="previous_page()">上一頁</span><span id=next_page onclick="next_page()" >下一頁</span><span id=end_page onclick="end_page()" >最後一頁</span> 每頁<span id=page_num>30</span>筆 / 最大頁數:<span id=max_num></span></span>
+	<div id=msg></div>
+	<!--距離<div id=distance></div>-->
+ <div id="googleMap" style="width:480px;height:480px;"></div> 
+</div>
+	<div id="result" class="force-overflow"></div>	
+</body>
+</html>

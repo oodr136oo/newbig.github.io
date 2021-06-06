@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <style>
+        kaiText
+        {
+            font-family : 微軟正黑體;
+            font-size : 20px;
+            line-height : 32px;
+        }
+    </style>
+</head>
+<body>
+
+<table border="1">
+		   
+            
+          <tr>
+                <td width="50" align="center">姓名</td>
+				<td width="120" align="center">電話</td>
+				<td width="120" align="center">地址</td>
+				<td width="200" align="center">電子信箱</td>
+				<td width="120" align="center">功能列</td>
+		  </tr>';
+				 //$queryString = "select * from student where $searchField like '%$keyWord%'";
+				$sql = "SELECT * FROM 'student'";
+				$result = mysqli_query($sql);
+				$num = mysqli_num_rows($result);
+				for ( $i=1; $i<=$num; $i++)
+				{
+					$row =mysqli_fetch_row($result);
+					$sno = $row[0];
+					$name = $row[1];
+					$phone = $row[2];
+					$address = $row[3];
+					echo"<tr><form>";
+					echo"<td align='center'>$i</td>";
+					echo"<td align='center'><input type='text' name='n' value='$name' size='8' /></td>";					
+					echo"<td align='center'><input type='text' name='t' value='$phone' size='10' /></td>";
+					echo"<td align='center'><input type='text' name='a' value='$address' size='10' /></td>";	
+					echo"<td align='center'><input type='submit' name='Submit' value='修改' />
+					                        <input type='submit' name='Submit' value='刪除' />
+					                        <input type='hidden' name='sno' value='$sno' />
+					</td>";		
+                   echo "</form></tr>";
+					
+				}
+				 echo '</table>';
+				 
+				 
+				 
+				 
+				 </body>
+</html>

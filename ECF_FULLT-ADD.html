@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf8">
+    <title>創思知識管理系統-新增作業</title>
+    <style>
+        kaiText
+        {
+            font-family : 微軟正黑體;
+            font-size : 18px;
+            text-align : left
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <kaiText>
+        <form action="insertProcess.php" method="GET">
+            <table border="0">
+                <tr><td>編號</td><td><input type="text" name="stuNo" size="20"></td></tr>
+                <tr><td>姓名</td><td><input type="text" name="stuName" size="20"></td></tr>
+                <tr><td>電話</td><td><input type="text" name="stuPhone" size="20"></td></tr>
+                <tr><td>住址</td><td><input type="text" name="stuAddress" size="40"></td></tr>
+                <tr><td></td><td align="right"><input type="submit" name="submit" value="確定"></td></tr>
+            </table>
+        </form>
+    </kaiText>
+    <a href="ECF_info.html">首頁</a>
+</body>
+</html>
+ECF_info.html
+ECF_FULLT-ADD.html
+ECF_FULLT-Query.html
+ECF_FULLT-Update.html  
+
+
+ updateProcess.php     stuUpdate.html 表單觸發之 action 為 updateProcess.php 程式
+targetRecordUpdate.php   按下"更新"鈕後，觸發 action='targetRecordUpdate.php' 並將各欄位資料透過隱式傳遞方式保留於隱藏欄位中，並轉存於 PHP 之 _GET[ ] 系統變數中，以待後續資料處理使用。
+
+ sureUpdate.php 最後觸發 sureUpdate.php 程式以完成終極更新至資料庫的作業

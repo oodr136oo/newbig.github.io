@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf8 /> 
+  <title>加值新增服務</title> 
+
+<link rel=StyleSheet type=text/css href=menu.css>
+<script language="JavaScript" charset="utf8" src="menu.js"></script>
+<style>
+        kaiText
+        {
+            font-family : 微軟正黑體;
+            font-size : 10px;
+            text-align : left
+            line-height: 40px;
+        }
+		#block2
+{
+	position:absolute;
+	top:40px; 
+	left:10px;
+	width:700px;
+	height:420px;
+  background-image:url(https://pic1.zhimg.com/v2-97badd4730166a14ef8bfe69041fbcc5_720w.jpg?source=172ae18b);
+    background-repeat:no-repeat;	
+
+    background-size:cover;
+	
+}
+    </style>
+</head>
+<body id="block2">
+<?php
+          var_dump($_GET);
+                    $id =! empty($_GET["id"]) ? $_GET["id"] : "";
+				   //$id = $_GET['id'];
+				   
+				   
+					//$db = 'act';
+					$link = mysqli_connect('localhost','root','');
+					
+					if (!$link)					
+					{
+						exit('錯誤');
+					}
+					
+					mysqli_set_charset($link ,'utf8');					
+					mysqli_select_db($link ,'act');
+
+					//mysqli_query($link,"SET CHARACTER SET utf8;"); 
+					
+
+					
+
+					
+	   if ( $id = "")
+	         {
+	       
+		  echo '
+		
+		   <table border="1" bacolor="#CCFFFF">
+		   
+            
+          <tr>
+                <td width="50" align="center">編號</td>
+				<td width="120" align="center">姓名</td>
+				<td width="120" align="center">電話</td>
+				<td align="center">地址</td>
+				<td width="200" align="center">電子信箱</td>
+				<td width="120" align="center">功能</td>
+		  </tr>';
+		  
+		  
+	
+	            
+				$sql = 'SELECT * from `student`';
+				$result = mysql_query($sql);
+				$num = mysql_num_rows($result);
+				for ( $i=1; $i<=$num; $i++)
+				{
+					$row = mysql_fetch_row($result);
+					$id = $row[0];					
+					$sno = $row[1];
+					$name = $row[2];
+					$phone = $row[3];
+					$address = $row[4];
+					echo "<tr><form>";
+					echo "<td align='center'>$i</td>";
+					echo "<td align='center'><input type='text' name='n' value='$sno' size='10' /></td>";						
+					echo "<td align='center'><input type='text' name='t' value='$name' size='10' /></td>";					
+					echo "<td align='center'><input type='text' name='a' value='$phone' size='10' /></td>";
+					echo "<td ><input type='text' name='e' value='$address' size='10' /></td>";	
+					echo "<td align='center'><input type='submit' name='Submit' value='修改' />
+					                        <input type='submit' name='Submit' value='刪除' />
+					                        <input type='hidden' name='id' value='$id' />
+					                 </td>";		
+                   echo "</form></tr>";
+					
+				}
+				 echo '</table>';
+				
+	          }
+		else
+		{
+			    //$sno =!empty($_GET["sno"]) ? $_GET["sno"] :null;
+				$n =!empty($_GET["n"]) ? $_GET["n"] :null;
+				$t =!empty($_GET["t"]) ? $_GET["t"] :null;
+				$a =!empty($_GET["a"]) ? $_GET["a"] :null;
+				$e =!empty($_GET["e"]) ? $_GET["e"] :null;				
+				$Submit =!empty ($_GET["Submit"]) ? $_GET["Submit"] :null;
+
+				$msg ='';
+				
+				
+				if ($Submit == '修改')
+				{
+					$sql = "UPDATE `student` SET  `sno`='$n' ,  `name`='$t' ,  `phone`='$a' , `address`='$e'   
+					WHERE `id`=$id" ;
+									
+					$msg ='修改完成';
+					
+				}
+				else if( $Submit == '刪除')
+				{
+					$sql = "DELETE FROM `student`  WHERE `id`=$id " ;
+									
+					$msg ='刪除完成';
+					
+				}	
+				
+				else 
+				{
+					 echo '操作錯誤1';
+									
+					return;
+					
+				}	
+				
+					
+					 
+					
+					mysql_query($link,$sql) or die('SQL執行失敗</br><a href="bag4-0.php">回上一頁</a>');
+					
+					echo $msg;
+					
+					
+				}
+				mysql_close($link);
+				
+
+	   
+    ?>
+	<p><a href="bag4-0.php">回上一頁</a>
+	</body>
+	
+	</html>

@@ -1,0 +1,32 @@
+<?php
+
+  error_reporting(E_ALL ^ E_DEPRECATED);
+       $check = lempty($_POST["check"]) ? $_POST["check"] : null;
+	   if ($check ! = "yes")
+	   {
+	       
+		  echo '
+		   <form action="PHA02-3.php" method="post"  name="form1">
+		   <p>新增會員資料</p>
+            
+          
+                <p>姓名:
+				<input type="text" name="name" id="name" size="10" /> 
+				</p>
+				 <p>電話:
+				<input type="text" name="tel" id="tel" size="20" /> 
+				</p>
+				 <p>住址:
+				<input type="text" name="address" id="address" size="60" /> 
+				</p>
+				<p>電子信箱:
+				<input type="text" name="email" id="email" size="40" /> 
+				</p>
+				
+                <p>
+				<input type="submit" name="submit" value="送出" />
+                <input type="hidden" name="check" id="check" value="yes" />
+				</p>
+				
+				  </form> '
+    
